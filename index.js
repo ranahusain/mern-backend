@@ -17,7 +17,7 @@ const http = require("http");
 app.use(
   cors({
     // origin: "http://localhost:5173",
-    origin: "https://mern-frontend-eight-bay.vercel.app",
+    origin: "https://mern-backend-5osx.onrender.com/",
     credentials: true,
   })
 );
@@ -27,7 +27,7 @@ const io = new Server(httpServer, {
   cors: {
     // origin: "*",
     // origin: "http://localhost:5173",
-    origin: "https://mern-frontend-eight-bay.vercel.app",
+    origin: "https://mern-backend-5osx.onrender.com/",
     credentials: true,
   },
 });

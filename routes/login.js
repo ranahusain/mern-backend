@@ -40,7 +40,9 @@ router.post("/login", async (req, res) => {
       //cookie section
       const options = {
         expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
-        // httpOnly: true, //by this only Server Side can Manipulate the Cookie
+        httpOnly: true, //by this only Server Side can Manipulate the Cookie
+        secure: true,
+        sameSite: "None",
       };
       res.status(200).cookie("token", token, options).json({
         success: true,
