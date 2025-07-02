@@ -9,6 +9,7 @@ const users = require("./routes/users");
 const login = require("./routes/login");
 const signup = require("./routes/signup");
 const logout = require("./routes/logout");
+const verify = require("./routes/verify");
 const cors = require("cors");
 
 const { Server } = require("socket.io");
@@ -50,6 +51,7 @@ app.use("/api", users);
 app.use("/api", login);
 app.use("/api", signup);
 app.use("/api", logout);
+app.use("/api", verify);
 
 app.get("/", (req, res) => {
   console.log("I am inside home page router");
