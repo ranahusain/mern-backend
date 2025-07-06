@@ -95,7 +95,9 @@ router.post("/signup", async (req, res) => {
     // Send response with cookie
     const options = {
       expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
-      // httpOnly: true,
+      httpOnly: true,
+      secure: true,
+      sameSite: "None",
     };
 
     res.status(200).cookie("token", token, options).json({

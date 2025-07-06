@@ -5,7 +5,7 @@ const router = express.Router();
 router.get("/logout", async (req, res) => {
   res.cookie("token", "", {
     expires: new Date(Date.now() + 1000),
-    httpOnly: false,
+    httpOnly: true,
     secure: true,
     sameSite: "None",
   });
