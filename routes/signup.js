@@ -93,14 +93,13 @@ router.post("/signup", async (req, res) => {
     newUser.password = undefined;
 
     // Send response with cookie
-    const options = {
-      expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
-      httpOnly: true,
-      secure: true,
-      sameSite: "None",
-    };
+    // const options = {
+    //   expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
+    //   // httpOnly: true,
+    // };
 
-    res.status(200).cookie("token", token, options).json({
+    // res.status(200).cookie("token", token, options).json({
+    res.status(200).json({
       success: true,
       token,
       user: newUser,
