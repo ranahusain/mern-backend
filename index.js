@@ -19,7 +19,7 @@ app.use(
   cors({
     // origin: "http://localhost:5173",
     origin: "https://mern-frontend-eight-bay.vercel.app",
-    credentials: true,
+    withCredentials: true,
   })
 );
 
@@ -30,7 +30,7 @@ const io = new Server(httpServer, {
     // origin: "http://localhost:5173",
     origin: "https://mern-frontend-eight-bay.vercel.app",
     methods: ["GET", "POST"],
-    credentials: true,
+    withCredentials: true,
   },
 });
 
