@@ -17,34 +17,13 @@ router.post("/login", async (req, res) => {
       return res.json("user not found");
     }
 
-    //check if the password matches
-    // const isPasswordValid = await bcrypt.compare(password, user.password);
-
-    // if (isPasswordValid) {
-    //   return res.json({ success: true, user });
-    // } else {
-    //   return res.json({ success: false });
-    // }
-
     if (user && (await bcrypt.compare(password, user.password))) {
-      const token = jwt.sign(
-        { id: user._id },
-        process.env.JWTSECRET, //use something like process.env.jwtsecret);
-        { expiresIn: "2h" }
-      );
+      const token = jwt.sign({ id: user._id }, process.env.JWTSECRET, {
+        expiresIn: "2h",
+      });
 
       user.token = token;
       user.password = undefined;
-
-      //send token in user Cookie
-      //cookie section
-      // const options = {
-      //   expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
-      //   httpOnly: true, //by this only Server Side can Manipulate the Cookie
-      //   secure: true,
-      //   sameSite: "None",
-      // };
-      // res.status(200).cookie("token", token, options).json({
       res.status(200).json({
         success: true,
         token,
